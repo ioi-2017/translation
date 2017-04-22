@@ -180,7 +180,15 @@ class GetTranslatePDF(LoginRequiredMixin, PDFTemplateView):
         'margin-right': '0.75in',
         'margin-bottom': '0.75in',
         'margin-left': '0.75in',
-        # 'zoom': 15,
+        # 'zoom': 1,
+        'footer-center': '[page]/[topage]',
+        # 'header-right': '<h3>Hello</h3>',
+        # 'header-html': 'http://localhost:8000/static/pdf_header.html',
+        # 'header-html': 'google.com',
+        # 'header-line': True,
+        # 'header-spacing': 3,
+        # 'footer-line': True,
+        # 'footer-spacing': 3,
         'javascript-delay': 500,
     }
 
@@ -204,6 +212,19 @@ class GetTranslatePDF(LoginRequiredMixin, PDFTemplateView):
         context['direction'] = 'rtl' if trans.language.rtl else 'ltr'
         context['content'] = content
         context['title'] = self.filename
+        from django.contrib.staticfiles.templatetags.staticfiles import static
+        # print(static('pdf_header.html'))
+        # print(self.request.build_absolute_uri(static('pdf_header.html')))
+        # self.cmd_options['header-html'] = self.request.build_absolute_uri(static('pdf_header.html'))
+        self.cmd_options['header-html'] = 'google.com'
+        # from django.template import Context, Template
+        # from django.utils.safestring import mark_safe
+        # t = Template('This is your <span>{{ message }}</span>.')
+        #
+        # c = Context({'message': 'Your message'})
+        # html = t.render(c)
+        # print()
+        # self.cmd_options['header-right'] = mark_safe(html)
         return context
 
 
