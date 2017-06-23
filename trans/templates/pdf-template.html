@@ -6,16 +6,16 @@
     <meta charset="utf-8">
     <title>{{title}}</title>
 
-    <link rel="stylesheet" href="/static/libs/markdown/katex.css">
-    <link rel="stylesheet" href="/static/css/markdown.css">
-    <link rel="stylesheet" href="/user/font.css">
-    <link rel="stylesheet" href="/static/css/pdf.css">
+    <link rel="stylesheet" href="http://{{ request.get_full_path}}/static/libs/markdown/katex.css">
+    <link rel="stylesheet" href="http://{{ request.get_host}}/static/css/markdown.css">
+    <link rel="stylesheet" href="http://{{ request.get_host}}/user/font.css">
+    <link rel="stylesheet" href="http://{{ request.get_host}}/static/css/pdf.css">
 
-    <script type="text/javascript" src="/static/libs/jquery/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="/static/libs/markdown/marked.js"></script>
-    <script type="text/javascript" src="/static/js/init-marked.js"></script>
-    <script type="text/javascript" src="/static/libs/markdown/katex.js"></script>
-    <script type="text/javascript" src="/static/libs/markdown/auto-render.min.js"></script>
+    <script type="text/javascript" src="http://{{ request.get_host}}/static/libs/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="http://{{ request.get_host}}/static/libs/markdown/marked.js"></script>
+    <script type="text/javascript" src="http://{{ request.get_host}}/static/js/init-marked.js"></script>
+    <script type="text/javascript" src="http://{{ request.get_host}}/static/libs/markdown/katex.js"></script>
+    <script type="text/javascript" src="http://{{ request.get_host}}/static/libs/markdown/auto-render.min.js"></script>
 
 </head>
 
@@ -23,7 +23,7 @@
     <div class="markdown-body pdf">
         <div class="header">
             <div class="logo">
-                <img src="/static/img/IOI-2017.svg" />
+                <img src="http://{{ request.get_host}}/static/img/IOI-2017.svg" />
             </div>
             <div class="text">
                 <h1>International Olympiad in Informatics 2017</h1>

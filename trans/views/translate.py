@@ -1,4 +1,4 @@
-import markdown
+import time
 from django.core.mail import send_mail
 from django.core.mail.message import EmailMessage, EmailMultiAlternatives
 from django.http.response import HttpResponseRedirect, HttpResponseNotFound
@@ -156,6 +156,47 @@ class TranslationMarkdown(LoginRequiredMixin, View):
                 content = translation.get_latest_text()
 
         return HttpResponse(content, content_type='text/plain; charset=UTF-8')
+
+
+class PhantomPDF(View):
+    def get(self, request, contest_slug, task_name, task_type):
+        user = User.objects.get(username=request.user)
+        try:
+            task = get_task_by_contest_and_name(contest_slug, task_name, user.is_editor())
+        except Exception as e:
+            return HttpResponseBadRequest(e)
+
+        if task_type == 'released':
+            translation = task.get_corresponding_translation()
+            content = task.get_published_text()
+        else:
+            translation = get_trans_by_user_and_task(user, task)
+            content = translation.get_latest_text()
+
+        # TODO check if it's available
+        direction = 'rtl' if translation.user.language.rtl else 'ltr'
+        context = {'content': content,
+                   'direction': direction,
+                   'task_name': task.name,
+                   'text_font_base64': user.text_font_base64,
+                   'country': translation.user.country.name,
+                   'language': translation.user.language.name,
+                   'contest': translation.task.contest.title}
+
+        from django.template.loader import render_to_string
+        file_path = "/tmp/%s-%s-%s" % (user.username, translation.task.name, str(time.time()).replace('.', '-'))
+        with open("%s.html"%file_path, "wb") as f:
+            f.write(render(request, 'pdf-template.html', context=context).content)
+        import os
+        print("%s.html"%file_path)
+        os.system("phantomjs convert.js %s.html %s.pdf" % (file_path, file_path))
+        with open('%s.pdf'%file_path, 'rb') as pdf:
+            response = HttpResponse(content=pdf)
+            response['Content-Type'] = 'application/pdf'
+            response['Content-Disposition'] = 'inline;filename=some_file.pdf'
+            os.system("rm %s.html %s.pdf" % (file_path, file_path))
+            return response
+        # return render(request, 'pdf-template.html', context=context)
 
 
 class TranslationPDF(LoginRequiredMixin, PDFTemplateView):
