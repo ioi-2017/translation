@@ -1,6 +1,4 @@
 
-@import url(/static/fonts/SourceSansPro/SourceSansPro.css);
-
 body {
     margin: 4em;
     font-size: 10px;
@@ -90,7 +88,7 @@ pre, table th {
 }
 
 .pdf.markdown-body code {
-    color: #333;
+    color: black;
 }
 
 .pdf pre {
@@ -106,6 +104,5 @@ pre, table th {
     body {
         margin: 0;
         zoom: 1;
-        font-family: 'CustomTextFont', Arial, serif;
     }
 }

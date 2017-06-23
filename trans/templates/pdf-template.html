@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/libs/markdown/katex.css">
     <link rel="stylesheet" href="/static/css/markdown.css">
     <link rel="stylesheet" href="/user/font.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="stylesheet" href="/static/css/pdf.css">
 
     <script type="text/javascript" src="/static/libs/jquery/jquery-3.1.1.min.js"></script>
@@ -42,7 +43,7 @@
             <hr>
         </div>
         <div id="left_ltr_plain_text_box" style="display: none">{{content}}</div>
-        <div id="rendered_content" style="direction:{{direction}}"></div>
+        <div id="rendered_content" dir="{{direction}}"></div>
     </div>
 </body>
 <script>

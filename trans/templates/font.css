@@ -6,7 +6,11 @@
 {% endif %}
 
 #rendered_content, #right_text_box {
-    font-family: 'CustomTextFont', Arial, serif;
+    font-family: CustomTextFont, Arial, serif;
+}
+
+#rendered_content[dir="rtl"], #right_text_box[dir="rtl"] {
+    font-family: CustomTextFont, IRANSans, Tahoma, Arial;
 }
 
 code::before, code::after,
