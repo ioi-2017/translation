@@ -6,7 +6,7 @@ var csrf_token;
 var last_time_get_edit_token;
 var latest_translation_text;
 var simplemde;
-var left_plain_text_box_id;
+var left_plain_text_box_id, simple_editor_id;
 var rtl;
 var last_version_particle_text;
 var update_token_interval = 60 * 1000;
@@ -59,7 +59,9 @@ function initial(text){
         });
     }
 
-    $('#simple').val(text);
+    simple_editor_id = 'simple-editor';
+    $('#' + simple_editor_id).val(text);
+
     task_text = $("#temp").html();
     translation_text = currentTranslationText();
     latest_translation_text = '';
@@ -76,7 +78,7 @@ function getDirectionStr(){
 
 function currentTranslationText(){
     if(textarea)
-        return document.getElementById('simple').value;
+        return document.getElementById(simple_editor_id).value;
     if (rtl)
         return $('#' + left_plain_text_box_id).text();
     return simplemde.value();
@@ -269,14 +271,14 @@ function onChangeTextarea(){
 
     textarea = !textarea;
     if(textarea){
-        $("#div-simple").show();
-        $("#div-editor").hide();
-        $("#simple").val(value);
-        $("#simple").css('direction', getDirectionStr());
-        textAreaAdjust(document.getElementById("simple"));
+        $("#div-simple-editor").show();
+        $("#div-md-editor").hide();
+        $("#" + simple_editor_id).val(value);
+        $("#" + simple_editor_id).css('direction', getDirectionStr());
+        textAreaAdjust(document.getElementById(simple_editor_id));
     }else{
-        $("#div-editor").show();
-        $("#div-simple").hide();
+        $("#div-md-editor").show();
+        $("#div-simple-editor").hide();
         if (rtl)
             $('#' + left_plain_text_box_id).val(value);
         else

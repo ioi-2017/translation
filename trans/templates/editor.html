@@ -38,8 +38,8 @@
             <label for="spell-checking" style="font-weight: normal;">check spelling</label>
             {% endif %}
 
-            <input id="simple-editor" type="checkbox" onchange="onChangeTextarea()">
-            <label for="simple-editor" style="font-weight: normal;">simple editor</label>
+            <input id="simple-editor-checkbox" type="checkbox" onchange="onChangeTextarea()">
+            <label for="simple-editor-checkbox" style="font-weight: normal;">simple editor</label>
 
             {% if not is_editor %}
             <div class="btn-group pull-right" role="group">
@@ -54,10 +54,10 @@
     <div class="row">
         <div class="col-sm-6 edit-pane" style="padding: 0;">
             <div id="left_text_box_container" onkeydown="checkIfCanChange()">
-                <div id="div-simple" style="display: none">
-                    <textarea id="simple" onkeyup="textAreaAdjust(this)" style="border:none; width: 100%; padding:15px;"></textarea>
+                <div id="div-simple-editor" style="display: none">
+                    <textarea id="simple-editor" onkeyup="textAreaAdjust(this)" style="border:none; width: 100%; padding:15px;"></textarea>
                 </div>
-                <div id="div-editor">
+                <div id="div-md-editor">
                     {% if rtl %}
                     <div id="left_rtl_plain_text_box" style="white-space: pre-wrap"></div>
                     {% else %}
