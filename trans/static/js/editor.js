@@ -11,7 +11,7 @@ var rtl;
 var last_version_particle_text;
 var update_token_interval = 60 * 1000;
 var previewInterval;
-var spellChecking = false, textarea = false;
+var textarea = false;
 
 
 $(document).ready(function() {
@@ -242,29 +242,6 @@ window.onbeforeunload =  function(){
     document.getElementById(left_plain_text_box_id).reset();
 };
 
-
-function onChangeSpellChecking(){
-    spellChecking = !spellChecking;
-    var value = simplemde.value();
-
-    /* reset simpleMDE container */
-    var element = document.getElementById("left_text_box_container");
-    while (element.firstChild) {
-       element.removeChild(element.firstChild);
-    }
-    var textarea = document.createElement('textarea');
-    textarea.setAttribute('id', 'left_ltr_plain_text_box');
-    element.appendChild(textarea);
-
-    /* new simpleMDE */
-    simplemde = new SimpleMDE({
-        element: document.getElementById("left_ltr_plain_text_box"),
-        status: false,
-        toolbar: false,
-        spellChecker: spellChecking,
-        initialValue: value
-    });
-}
 
 function onChangeTextarea(){
     var value = currentTranslationText();

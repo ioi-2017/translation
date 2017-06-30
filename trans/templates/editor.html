@@ -33,9 +33,6 @@
             <button onclick="sendPrint('{% url 'task_print' 'task' contest_slug task_name %}')" class="btn btn-default" title="Print"><i class="fa fa-btn fa-print fa-lg"></i></button>
             {% if is_editor %}
             <button class="btn btn-default" data-toggle="modal" data-target="#releaseModal" title="Release"><i class="fa fa-btn fa-upload fa-lg"></i></button>
-            &nbsp;
-            <input id="spell-checking" type="checkbox" onchange="onChangeSpellChecking()"> 
-            <label for="spell-checking" style="font-weight: normal;">check spelling</label>
             {% endif %}
 
             <input id="simple-editor-checkbox" type="checkbox" onchange="onChangeTextarea()">
