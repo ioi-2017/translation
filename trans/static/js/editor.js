@@ -11,7 +11,7 @@ var rtl;
 var last_version_particle_text;
 var update_token_interval = 60 * 1000;
 var previewInterval;
-var spellChecking = false;
+var spellChecking = false, textarea = false;
 
 
 $(document).ready(function() {
@@ -59,7 +59,7 @@ function initial(text){
         });
     }
 
-
+    $('#simple').val(text);
     task_text = $("#temp").html();
     translation_text = currentTranslationText();
     latest_translation_text = '';
@@ -68,13 +68,15 @@ function initial(text){
     onPreviewClick();
 }
 
-function getDirectionStr(is_rtl){
-    if(is_rtl)
+function getDirectionStr(){
+    if(rtl)
         return 'rtl';
     return 'ltr';
 }
 
 function currentTranslationText(){
+    if(textarea)
+        return document.getElementById('simple').value;
     if (rtl)
         return $('#' + left_plain_text_box_id).text();
     return simplemde.value();
@@ -103,7 +105,7 @@ function activeBtn(id){
 function onPreviewClick(){
     current_text = currentTranslationText();
     renderMarkdown('right_text_box', current_text);
-    $('#right_text_box').attr('dir', getDirectionStr(rtl));
+    $('#right_text_box').attr('dir', getDirectionStr());
     $('#right_text_box').css('whiteSpace', 'normal');
     previewInterval = setInterval(onlinePreview, 100);
     activeBtn('#preview-btn');
@@ -260,4 +262,30 @@ function onChangeSpellChecking(){
         spellChecker: spellChecking,
         initialValue: value
     });
+}
+
+function onChangeTextarea(){
+    var value = currentTranslationText();
+
+    textarea = !textarea;
+    if(textarea){
+        $("#div-simple").show();
+        $("#div-editor").hide();
+        $("#simple").val(value);
+        $("#simple").css('direction', getDirectionStr());
+        textAreaAdjust(document.getElementById("simple"));
+    }else{
+        $("#div-editor").show();
+        $("#div-simple").hide();
+        if (rtl)
+            $('#' + left_plain_text_box_id).val(value);
+        else
+            simplemde.value(value);
+    }
+
+}
+
+function textAreaAdjust(o){
+    o.style.height = "1px";
+    o.style.height = (25+o.scrollHeight)+"px";
 }

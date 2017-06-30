@@ -37,6 +37,10 @@
             <input id="spell-checking" type="checkbox" onchange="onChangeSpellChecking()"> 
             <label for="spell-checking" style="font-weight: normal;">check spelling</label>
             {% endif %}
+
+            <input id="simple-editor" type="checkbox" onchange="onChangeTextarea()">
+            <label for="simple-editor" style="font-weight: normal;">simple editor</label>
+
             {% if not is_editor %}
             <div class="btn-group pull-right" role="group">
                 <button type="button" id="preview-btn" class="btn btn-default" onclick="onPreviewClick()">Preview</button>
@@ -50,10 +54,16 @@
     <div class="row">
         <div class="col-sm-6 edit-pane" style="padding: 0;">
             <div id="left_text_box_container" onkeydown="checkIfCanChange()">
-                {% if rtl %}
-                <div id="left_rtl_plain_text_box" style="white-space: pre-wrap"></div>
-                {% else %}
-                <textarea id="left_ltr_plain_text_box"></textarea> {% endif %}
+                <div id="div-simple" style="display: none">
+                    <textarea id="simple" onkeyup="textAreaAdjust(this)" style="border:none; width: 100%; padding:15px;"></textarea>
+                </div>
+                <div id="div-editor">
+                    {% if rtl %}
+                    <div id="left_rtl_plain_text_box" style="white-space: pre-wrap"></div>
+                    {% else %}
+                    <textarea id="left_ltr_plain_text_box"></textarea>
+                    {% endif %}
+                </div>
             </div>
         </div>
         <div class="col-sm-6 preview-pane markdown-body">
