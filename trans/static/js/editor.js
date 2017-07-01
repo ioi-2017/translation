@@ -239,6 +239,8 @@ function checkIfCanChange(){
 window.onbeforeunload =  function(){
     saveVersionParticle();
     releasToken();
+    $('#simple-editor-checkbox').prop('checked', false);
+    document.getElementById(simple_editor_id).reset();
     document.getElementById(left_plain_text_box_id).reset();
 };
 
