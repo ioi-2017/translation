@@ -1,4 +1,4 @@
-FROM python:3.4
+FROM hub.docker.hamravesh.ir/library/python:3.4
 
 RUN apt-get update && apt-get install -qy libfontconfig wget
 RUN apt-get install -qy wkhtmltopdf xvfb
