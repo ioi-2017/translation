@@ -50,7 +50,7 @@ class Home(LoginRequiredMixin, View):
             return ip
         import logging
         logger = logging.getLogger(__name__)
-        logger.error("Request IP %s - user: %s" % (get_client_ip(request), user.username))
+        logger.error("Request IP %s - user: %s, COOKIE: %s" % (get_client_ip(request), user.username, request.COOKIES))
         return render(request, 'home.html', context={'tasks_lists': tasks_lists, 'home_content': home_content,
                                                      'contests': contests, 'is_editor': user.is_editor()})
 
