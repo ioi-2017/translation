@@ -40,6 +40,17 @@ class Home(LoginRequiredMixin, View):
                        Contest.objects.order_by('-order') if
                        len(tasks_by_contest[c]) > 0]
         contests = Contest.objects.order_by('order')
+
+        def get_client_ip(request):
+            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+            if x_forwarded_for:
+                ip = x_forwarded_for.split(',')[0]
+            else:
+                ip = request.META.get('REMOTE_ADDR')
+            return ip
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error("Request IP %s - user: %s" % (get_client_ip(request), user.username))
         return render(request, 'home.html', context={'tasks_lists': tasks_lists, 'home_content': home_content,
                                                      'contests': contests, 'is_editor': user.is_editor()})
 
