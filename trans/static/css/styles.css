@@ -4,6 +4,7 @@ Global
 
 @import url(/static/fonts/SourceSansPro/SourceSansPro.css);
 @import url(/static/fonts/IRANSans/IRANSans.css);
+@import url(/static/fonts/Adobe/adobe.css);
 
 /*@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600);*/
 
@@ -262,6 +263,21 @@ code, pre {
     font-family: 'Loma', CustomTextFont, Arial, serif;
 }
 
-.rendered_content[lang="zh"], .rendered_content[lang="tw"]{
+.rendered_content[lang="zh-CN"] {
+    font-family: 'Source Han Serif CN', CustomTextFont, serif;
+}
+.rendered_content[lang="zh-CN"] h1,
+.rendered_content[lang="zh-CN"] h2,
+.rendered_content[lang="zh-CN"] h3,
+.rendered_content[lang="zh-CN"] h4 {
+    font-family: 'Source Han Sans CN', CustomTextFont, sans;
+}
+.rendered_content[lang="zh-CN"] code {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.rendered_content[lang="zh-TW"],
+.rendered_content[lang="zh-HK"],
+.rendered_content[lang="zh-MO"] {
     font-family: 'PMingLiU', CustomTextFont, Arial, serif;
 }

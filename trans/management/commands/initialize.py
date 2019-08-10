@@ -51,7 +51,7 @@ class Command(BaseCommand):
         for name, code, direction in data:
             Language.objects.get_or_create(name=name, code=code, rtl=(direction=='rtl'))
             # print(name, code, direction=='rtl')
-        print('Languages improted.')
+        print('Languages imported.')
 
     def import_countries(self, reset):
         if reset:
@@ -62,7 +62,7 @@ class Command(BaseCommand):
         for name, code in data:
             Country.objects.get_or_create(name=name, code=code)
             # print(name, code)
-        print('Countries improted.')
+        print('Countries imported.')
 
     def import_users(self, reset):
         if reset:
@@ -77,7 +77,7 @@ class Command(BaseCommand):
             user.set_password(password)
             user.save()
             # print(country, language, username, password)
-        print('Users improted.')
+        print('Users imported.')
 
     def import_tasks(self, reset):
         if reset:
@@ -97,7 +97,7 @@ class Command(BaseCommand):
                 task_name = task_parts[-1]
                 self.import_task(file_name, task_name, order, contest_slug)
                 # print('Task {} imported to {}.'.format(task_name, contest_slug))
-        print('Tasks improted.')
+        print('Tasks imported.')
 
     def import_task(self, file_name, task_name, order, contest_slug):
         with open(file_name, 'r') as file:

@@ -16,6 +16,7 @@ COPY trans/static/fonts/SourceSansPro/ttf/* /usr/share/fonts/
 COPY trans/static/fonts/Korean/* /usr/share/fonts/
 COPY trans/static/fonts/Thai/* /usr/share/fonts/
 COPY trans/static/fonts/Taiwan/* /usr/share/fonts/
+COPY trans/static/fonts/Adobe/* /usr/share/fonts/
 
 COPY requirements.txt /root/requirements.txt
 RUN pip3 install -r /root/requirements.txt

@@ -45,7 +45,7 @@ You may optionally perform the following tasks:
   Then exit from the shell by typing `exit`.
 * You can get access to the system logs by running `dokcer-compose logs`.
   To follow the logs from now on, run `docker-compose logs -f --tail=0`.
-* To stop the system, run `dokcer-compose stop`.
+* To stop the system, run `docker-compose stop`.
 
 Development Settings
 --------------------
