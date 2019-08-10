@@ -1,0 +1,47 @@
+@font-face{
+    font-family: 'Source Han Serif CN';
+    font-weight: 210;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./SourceHanSerifCN-Regular.otf') format('opentype');
+}
+
+@font-face{
+    font-family: 'Source Han Serif CN';
+    font-weight: 730;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./SourceHanSerifCN-Bold.otf') format('opentype');
+}
+
+@font-face{
+    font-family: 'Source Han Sans CN';
+    font-weight: 420;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./SourceHanSansCN-Regular.otf') format('opentype');
+}
+
+@font-face{
+    font-family: 'Source Han Sans CN';
+    font-weight: 780;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./SourceHanSansCN-Regular.otf') format('opentype');
+}
+
+@font-face{
+    font-family: 'Source Code Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./SourceCodePro-Regular.otf') format('opentype');
+}
+
+@font-face{
+    font-family: 'Source Code Pro';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('./SourceCodePro-Bold.otf') format('opentype');
+}
